@@ -1,0 +1,81 @@
+version: 2
+
+models:
+
+  - name: oliver_dim_customer
+    description: Customer dimension table for Oliver's data warehouse
+    columns:
+      - name: cust_key
+        tests:
+          - unique
+          - not_null
+      - name: customerid
+        description: Original customer ID from the transactional system
+      - name: firstname
+      - name: lastname
+      - name: email
+      - name: phonenumber
+      - name: state
+
+  - name: oliver_dim_date
+    description: Date dimension derived from order dates
+    columns:
+      - name: date_key
+        tests:
+          - unique
+          - not_null
+      - name: date_id
+      - name: dayofweek
+      - name: month
+      - name: quarter
+      - name: year
+
+  - name: oliver_dim_employee
+    description: Employee dimension table
+    columns:
+      - name: employee_key
+        tests:
+          - unique
+          - not_null
+      - name: employeeid
+      - name: firstname
+      - name: lastname
+      - name: email
+      - name: phone_number
+      - name: hire_date
+      - name: position
+
+  - name: oliver_dim_product
+    description: Product dimension table
+    columns:
+      - name: product_key
+        tests:
+          - unique
+          - not_null
+      - name: product_id
+      - name: product_name
+      - name: description
+
+  - name: oliver_dim_store
+    description: Store dimension table
+    columns:
+      - name: store_key
+        tests:
+          - unique
+          - not_null
+      - name: store_id
+      - name: store_name
+      - name: street
+      - name: city
+      - name: state
+
+  - name: fact_sales
+    description: Sales fact table capturing product sales transactions
+    columns:
+      - name: cust_key
+      - name: date_key
+      - name: store_key
+      - name: product_key
+      - name: quantity
+      - name: dollars_sold
+      - name: unit_price

@@ -1,9 +1,21 @@
 {{ config(materialized='table') }}
 
-with dates as (
+with order_dates as (
     select distinct
         cast(order_date as date) as date_id
     from {{ source('oliver', 'ORDERS') }}
+),
+
+certification_dates as (
+    select distinct
+        cast(certification_awarded_date as date) as date_id
+    from {{ ref('stg_employee_certifications') }}
+),
+
+dates as (
+    select date_id from order_dates
+    union
+    select date_id from certification_dates
 )
 
 select

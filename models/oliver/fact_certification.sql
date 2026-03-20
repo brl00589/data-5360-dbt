@@ -9,4 +9,4 @@ from {{ ref('stg_employee_certifications') }} sec
 join {{ ref('oliver_dim_employee') }} de
     on sec.employee_id = de.employeeid
 join {{ ref('oliver_dim_date') }} dd
-    on sec.certification_awarded_date = dd.date_id
+    on to_date(sec.certification_awarded_date) = to_date(dd.date_id)

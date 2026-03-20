@@ -1,3 +1,5 @@
+{{ config(materialized='table') }}
+
 select
     de.employee_key,
     dd.date_key,

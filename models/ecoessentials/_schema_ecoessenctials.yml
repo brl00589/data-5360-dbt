@@ -1,0 +1,20 @@
+version: 2
+
+
+models:
+  - name: dim_customer
+    description: "Contains all customer related information, such as name and address."
+  - name: dim_campaign
+    description: "Contains the id and name of promotional campaigns"
+  - name: dim_date
+    description: "Contains information related to dates, such as the day of the week and month"
+  - name: dim_product
+    description: "Contains product id's, types, and names"
+  - name: dim_email
+    description: "Contains the id and name of marketing emails"
+  - name: dim_event_type
+    description: "Contains the eventtype of marketing emails"
+  - name: fact_email_sent
+    description: "Contains information on the email, campaign, event_type, customer, date, and timestamp of promotional emails that are sent"
+  - name: fact_order
+    description: "Contains information on orders, including customer, campaign, product, date, quantity, price, and discount"

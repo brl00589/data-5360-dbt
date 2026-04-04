@@ -68,6 +68,10 @@ models:
       - name: street
       - name: city
       - name: state
+        tests:
+          - accepted_values:
+              arguments:
+                values: ['Alaska', 'Arizona', 'Utah']
 
   - name: fact_sales
     description: Sales fact table capturing product sales transactions

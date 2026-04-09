@@ -16,7 +16,13 @@ INNER JOIN {{ ref('dim_event_type') }} as et
 INNER JOIN {{ ref('dim_email') }} as e
     ON me.emailid = e.emailid
 INNER JOIN {{ ref('dim_customer') }} as c
-    ON me.customerid = c.customer_id
+    ON (
+        me.customerid = c.customer_id
+        OR (
+            me.customerid is null
+            AND me.subscriberid = c.subscriberid
+        )
+    )
 INNER JOIN {{ ref('dim_campaign') }} as cm
     ON me.campaignid = cm.campaign_id
 INNER JOIN {{ ref('dim_date') }} as d

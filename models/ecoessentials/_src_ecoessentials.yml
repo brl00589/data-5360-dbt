@@ -1,0 +1,19 @@
+version: 2
+
+sources:
+  - name: ecoessentials_landing
+    database: benjaminlee
+    schema: deliverable2_ecoessentials_transactional_db
+    tables:
+      - name: customer
+      - name: order_tbl
+        identifier: '"ORDER"'
+      - name: order_line
+      - name: product
+      - name: promotional_campaign
+
+  - name: ecoemails_landing
+    database: benjaminlee
+    schema: fivetran_naming
+    tables:
+      - name: marketingemails
